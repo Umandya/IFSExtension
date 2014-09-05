@@ -1,0 +1,148 @@
+﻿body 
+{
+    background-color : #f7f7f7;
+    overflow:hidden;
+}
+
+#heading
+{
+     height:90px; 
+     width: auto; 
+     border:solid;
+     border-width : thin; 
+     color: Black ;
+     background-color:#863d8d;
+}
+
+#headerLoc
+{
+    width:840px;
+}
+
+#logoIfs
+{
+    background-image:url('76x76_logoIFS.png');
+    width:76px;
+    height:76px;
+    float:left;
+    margin-top:5px;
+    margin-left:5px;
+}
+
+#extDetailsDiv
+{
+    width:60%; 
+    height:680px;
+    float:left;
+}
+
+#div1
+{
+   float:left;
+}
+#div2
+{
+   margin-left:20px;
+}
+
+#div3
+{
+    padding-left:10px;
+    max-height: 550px;
+    overflow:auto;
+    overflow-x:hidden;
+}
+
+#other_names
+{
+    margin-left:20px;
+    margin-top:40px;
+    visibility:hidden;
+}
+
+#div4
+{
+    padding-left:10px;
+    overflow:auto;
+    height:225px;
+}
+
+#div5
+{
+    float:right;
+    height:600px;
+    margin-top:10px;
+    margin-right:10px;
+    
+
+}
+
+#div6
+{
+     float:left;
+}
+
+#importantExt
+{
+   padding-left:10px;
+   padding-top:5px;
+   cursor: pointer;
+}
+
+#div7
+{
+    float:left; 
+    clear:both;
+    margin-top:20px;
+}
+
+#conference
+{
+    padding-left:10px;
+    padding-top:5px;
+    cursor: pointer;
+}
+
+#divConRooms
+{
+    overflow:auto;
+    margin-top:20px;
+    visibility:hidden;
+}
+
+#divImportant
+{
+    overflow:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+    visibility:hidden;
+}
+.divBtn{
+    background: -webkit-gradient(linear, left top, left bottom, from(#d7d7d7), to(#ffffff)); 
+    border: 1px solid #ACBECF;
+    width: 200px;
+    height: 30px;
+    z-index:1000;
+}
+#ext
+{
+    color:Blue; 
+    cursor: pointer;
+    padding-left:30px;
+    width:80px;
+    float:right;
+	text-decoration: underline;
+}
+.extClass
+{
+    color:Blue; 
+    cursor: pointer;
+    padding-left:30px;
+    width:80px;
+    float:right;
+}
+.highlight
+{
+background-color:#dddddd;
+padding:3px 0px 3px 3px;
+}
