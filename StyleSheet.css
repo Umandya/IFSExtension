@@ -1,148 +1,189 @@
-﻿body 
-{
-    background-color : #f7f7f7;
-    overflow:hidden;
+﻿ .divOne
+        {
+             
+            width:1032px;
+            background-color : #873E8D;
+            
+            margin: 50px 0 0 100px;
+    top: -43px;
+    left: 10px;
+    position: absolute;
+    height: 161px;
 }
 
-#heading
-{
-     height:90px; 
-     width: auto; 
-     border:solid;
-     border-width : thin; 
-     color: Black ;
-     background-color:#863d8d;
+         
+        
+         .divFour
+        {
+            width:100%;
+            margin: 50px 0 0 100px;
+        }
+        
+          .divFive
+        {
+            width:100%;
+            margin: 50px 0 0 100px;
+        }
+        
+             .divSix
+        {
+            width:100%;
+            margin: 50px 0 0 100px;
+    top: 1005px;
+    left: 277px;
+    position: absolute;
+    height: 265px;
 }
+        
+        
+        #Image1
+        {
+            height : 150px;
+            width : 150px;
+            
+            
+            border-Width:2px;
+            border-Color:White;
+            border-Style:Solid;
 
-#headerLoc
-{
-    width:840px;
+            
+            
+        }
+            
+        .text1
+        {
+            font-family : Sans-Serif;
+            color: white;
+            font-size : 55px;
+            text-align : center;
+           
+        }
+        
+        .table1
+        {
+            width:80%;
+    height: 153px;
 }
-
-#logoIfs
-{
-    background-image:url('76x76_logoIFS.png');
-    width:76px;
-    height:76px;
-    float:left;
-    margin-top:5px;
-    margin-left:5px;
-}
-
-#extDetailsDiv
-{
-    width:60%; 
-    height:680px;
-    float:left;
-}
-
-#div1
-{
-   float:left;
-}
-#div2
-{
-   margin-left:20px;
-}
-
-#div3
-{
-    padding-left:10px;
-    max-height: 550px;
-    overflow:auto;
-    overflow-x:hidden;
-}
-
-#other_names
-{
-    margin-left:20px;
-    margin-top:40px;
-    visibility:hidden;
-}
-
-#div4
-{
-    padding-left:10px;
-    overflow:auto;
-    height:225px;
-}
-
-#div5
-{
-    float:right;
-    height:600px;
-    margin-top:10px;
-    margin-right:10px;
+        
+    .nav
+    {
+        margin : 0px;
+        position:absolute;
+         top: 180px;
+          left: 110px;
+        
+    }
     
-
-}
-
-#div6
-{
-     float:left;
-}
-
-#importantExt
-{
-   padding-left:10px;
-   padding-top:5px;
-   cursor: pointer;
-}
-
-#div7
-{
-    float:left; 
-    clear:both;
-    margin-top:20px;
-}
-
-#conference
-{
-    padding-left:10px;
-    padding-top:5px;
-    cursor: pointer;
-}
-
-#divConRooms
-{
-    overflow:auto;
-    margin-top:20px;
-    visibility:hidden;
-}
-
-#divImportant
-{
-    overflow:auto;
-    margin-top:10px;
-    margin-bottom:10px;
-    visibility:hidden;
-}
-.divBtn{
-    background: -webkit-gradient(linear, left top, left bottom, from(#d7d7d7), to(#ffffff)); 
-    border: 1px solid #ACBECF;
-    width: 200px;
-    height: 30px;
-    z-index:1000;
-}
-#ext
-{
-    color:Blue; 
-    cursor: pointer;
-    padding-left:30px;
-    width:80px;
-    float:right;
-	text-decoration: underline;
-}
-.extClass
-{
-    color:Blue; 
-    cursor: pointer;
-    padding-left:30px;
-    width:80px;
-    float:right;
-}
-.highlight
-{
-background-color:#dddddd;
-padding:3px 0px 3px 3px;
-}
+    .nav ul
+    {
+        padding : 0px;
+        list-style : none;
+        margin:0px;
+    }
+    
+        
+    .nav ul li
+    {
+        margin : 0.5px;
+        float : left;
+        text-align : center;
+        width :257px;
+        display:block;
+        position:relative;
+        
+    }
+    
+    .nav ul li a
+    {
+        
+        
+        
+        color : #FFFFFF;
+        background-color : #873E8D;
+        padding : 10px;
+        font-family : Sans-Serif;
+        font-size : 13px;
+        display : block;
+        text-decoration : none;
+        font-weight : bold;
+        white-space:nowrap;
+        
+    }
+    
+     .nav ul li a:hover 
+    {
+        color : #FFFFFF;
+        background-color : #A878AE;
+    }
+    
+     .nav ul li ul
+    {
+        display : none;
+        
+    }
+    
+    .nav ul li:hover ul
+    {
+        display : block;
+        position:absolute;
+    }
+    
+        .divThree
+    {
+         margin : 0px;
+        position:absolute;
+         top: 180px;
+          left: 100px;
+         
+        
+    }
+    
+    .divThree ul
+    {
+        padding : 0px;
+        list-style : none;
+        margin:0px;
+    }
+    
+    .divThree ul li
+    {
+        
+        display:block;
+        position:relative;
+        margin : 0.5px;
+        float : left;
+        text-align : center;
+        width :515px;
+        
+    }
+    
+    .divThree ul li a
+    {
+        color : #FFFFFF;
+        background-color : #873E8D;
+        padding : 10px;
+        font-family : Sans-Serif;
+        font-size : 13px;
+        display : block;
+        text-decoration : none;
+        font-weight : bold;
+        
+    }
+    
+     .divThree ul li a:hover 
+    {
+        color : #FFFFFF;
+        background-color : #A878AE;
+    }
+    
+     .divThree ul li ul
+    {
+        display : none;
+        
+    }
+    
+    .divThree ul li:hover ul
+    {
+        display : block;
+    }
+    
