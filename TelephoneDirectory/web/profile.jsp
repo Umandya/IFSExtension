@@ -181,41 +181,44 @@
                     editCount++;
                         }
                     %>
-
-
-
-
-                    <div class="col-md-8" style="min-height: 80px; display: inline; white-space: nowrap;" aria-expanded="false">
-                        <form id="formAdd" role="search" method="POST" action="NewExtensionServlet">
-                            <a class="btn btn-default" role="button"data-toggle-me="tooltip" title="add extension" data-toggle="collapse" href="#collapseAddnew" aria-expanded="false" aria-hidden="true" onclick="testBtn()">
+                    <div class="col-md-12" style="min-height: 80px; display: inline; white-space: nowrap;">
+                        <form id="formAdd" role="search" method="POST" action="NewExtensionServlet">                
+                            <a class="btn btn-default" id="adding" role="button" data-toggle-me="tooltip" title="add extension" onclick="show('collapseAddnew')" >
                                 <img id="add" src="images/add2.png" alt="Mountain View" style="width:20px;height:20px; " >
                             </a> 
-                            <div class="collapse in width" id="collapseAddnew"  style="overflow:hidden; display: inline-block; white-space: nowrap; alignment-adjust:middle; vertical-align: middle; visibility: hidden" >
-                                <input id="textboxA" type="text" class="form-control" name="extension" style="width: 50%; display: inline-block; white-space: nowrap;" placeholder="Ext Number">
-                                <div style="display: inline-block; white-space: nowrap;"><button type="button" style="width: 80%; " onclick="valid3('textboxA', 'formAdd')" value="ADD NEW" class="btn btn-primary" id = "addButton">Add</button></div>
+                            <div class="collapse in width" id="collapseAddnew"  style="padding-left: 10px; display: inline-block; visibility:collapse; white-space: nowrap; vertical-align: middle" >
+                                <img src="images/phone3.png" alt="Mountain View" style="width:40px;height:30px; padding-right: 10px"><input id="textboxA" type="text" class="form-control" name="extension" style="padding-left: 10px; width: 40%; display: inline-block; white-space: nowrap;" placeholder="Ext Number">
+                                <div style="padding-left: 10px; display: inline-block; white-space: nowrap;">
+                                    <a class="btn btn-default" id="cancel" role="button" data-toggle-me="tooltip" title="Cancel" onclick="cancel()"/>
+                                    <img id="canceling" src="images/delete2.png" alt="Mountain View" style="width:20px;height:20px;">
+                                    </a>
+                                    <a class="btn btn-default" role="button" onclick="valid3('textboxA', 'formAdd')" class="btn btn-default" id = "addButton"  data-toggle-me="tooltip" title="Add New">
+                                    <img id="addingVal" src="images/edit2.png"  alt="Mountain View" style="width:20px;height:20px;">
+                                    </a>
+                                    </div>
                                 <input type="hidden" class="form-control" name="myusername" value="<%=request.getAttribute("myusername")%>">
                                 <input type="hidden" class="form-control" name="fullname" value="<%=request.getAttribute("fullname")%>">
                                 <input type="hidden" class="form-control" name="username" value="<%=request.getAttribute("username")%>">
                                 <input type="hidden" class="form-control" name="type" value="<%=request.getAttribute("type")%>">
-                                
+                            
                             </div>
                         </form>
 
                     </div>
                     
-                    <div class="col-md-4">
+                               
+                    <div class="col-md-6">
                             <form id="formNew" method="POST" role="search" action="AddNewEmployee">
-                                <a class="btn btn-default" role="button" data-toggleme="tooltip" title="Add new employee" data-toggle="collapse" href="#collapseAddnewUser" aria-expanded="false" aria-controls="collapseExample">
-                                
-                                <img id="pen" src="images/member.png" alt="Mountain View"  style="width:20px;height:20px;">
-
+                            <a class="btn btn-default" role="button" data-toggle-me="tooltip" title="add new user"  data-toggle="collapse" href="#collapseAddnewUser" aria-expanded="false" >
+                                <img id="pen" src="images/member.png" alt="Mountain View" style="width:20px;height:20px;">
                             </a>
                             <div class="collapse" style="padding-top: 10px" id="collapseAddnewUser">
-                                <div style="padding-bottom: 10px"><input id="uname" type="text" class="form-control" name="newusername" placeholder="Username"><label id="myDiv" style="background-color: #ffffff"></label><input id="fname" type="hidden" class="form-control" name="newfname"></div>
-
+                                <div style="display: inline; white-space: nowrap;">
+                                <div style="padding-bottom: 10px; display: inline-block; white-space: nowrap;"><input id="uname" type="text" class="form-control" name="newusername" placeholder="Username"><input id="fname" type="hidden" class="form-control" name="newfname"></div>
+                                <div style="height: 20px; width: 200px; display: inline-block; white-space: nowrap;" id="myDiv"></div>
+                                </div>
                                 <div style="padding-bottom: 10px"><input id="ext" type="text" class="form-control" name="newextension" placeholder="Extension"></div>
-
-                                    <button type="button" onclick="validM('ext', 'formNew')" value="Edit" class="btn btn-primary" disabled="true" id="addEmp">Add new User</button>
+                                <button type="button" onclick="validM('ext', 'formNew')" value="Edit" class="btn btn-primary" disabled="true" id="addEmp">Add new User</button>
                                 <input type="hidden" class="form-control" name="username" value="<%=request.getAttribute("username")%>">
 
                             </div>
@@ -240,6 +243,8 @@ $(document).ready(function(){
     $('[data-toggleme="tooltip"]').tooltip();
 });
 </script>
+
+
 
 
 
@@ -309,6 +314,23 @@ $(document).ready(function(){
 
         <script>
             var funCall=0;
+            
+            var editCount = 1;
+            function show(textBox){
+               
+                if(editCount%2 === 1){
+                   document.getElementById(textBox).style.visibility='visible';
+                   
+                }else{
+                    document.getElementById(textBox).style.visibility='hidden'; 
+                }
+                 editCount++;
+                 
+            }
+                function cancel(){
+                document.getElementById("collapseAddnew").style.visibility='hidden';
+                editCount = 1;
+            }
             
             function testBtn(){
                 document.getElementById("collapseAddnew").style.visibility='visible';
