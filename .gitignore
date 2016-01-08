@@ -1,0 +1,29 @@
+TelephoneDirectory/nbproject/private/private.properties
+TelephoneDirectory/nbproject/private/private.xml
+TelephoneDirectory/nbproject/project.properties
+TelephoneDirectory/nbproject/project.xml
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/
+
+# NetBeans specific #
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Class Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/target/
+target/
