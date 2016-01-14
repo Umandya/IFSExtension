@@ -4,7 +4,7 @@
 --%>
 
 <%@page import="ActiveDirectory.Authentication"%>
-<%@page import="DbConnect.dbConnection"%>
+<%@page import="DbConnect.DBConnection"%>
 <%@page import="java.net.InetAddress"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

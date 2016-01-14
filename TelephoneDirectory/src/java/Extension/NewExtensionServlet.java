@@ -6,8 +6,7 @@
 package Extension;
 
 import ActiveDirectory.Authentication;
-import DbConnect.dbConnection;
-import Model.User;
+import DbConnect.MyConnection;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -44,7 +43,7 @@ public class NewExtensionServlet extends HttpServlet {
        
         RequestDispatcher requestDispatcher;
         Authentication ac = new Authentication();
-        DbConnect.dbConnection connection = new dbConnection();
+        MyConnection connection = new MyConnection();
                
         String url = request.getServletPath();
         String username = request.getParameter("username");
@@ -60,7 +59,7 @@ public class NewExtensionServlet extends HttpServlet {
         
         
         if("/NewExtensionServlet" .equals(url)){
-           
+            System.out.println("new extn");
            String extn = "Correct extension";    
            
         username = request.getParameter("username");
@@ -77,7 +76,7 @@ public class NewExtensionServlet extends HttpServlet {
         
            
            Boolean result = connection.addExtension(myname, fullname, extension,type);
-            System.out.println(result);
+            System.out.println("hi "+result);
            if(result){
                
             request.setAttribute("check", extn);
@@ -94,7 +93,7 @@ public class NewExtensionServlet extends HttpServlet {
             if(!username.equals(myname)){
                     requestDispatcher = request.getRequestDispatcher("memberView.jsp");
             }else if("admin".equals(type)){
-                     requestDispatcher = request.getRequestDispatcher("profile.jsp");
+                      requestDispatcher = request.getRequestDispatcher("profile.jsp");
             }else{
                     requestDispatcher = request.getRequestDispatcher("memberProfile.jsp");
             }

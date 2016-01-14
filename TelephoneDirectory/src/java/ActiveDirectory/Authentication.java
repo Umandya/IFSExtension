@@ -6,9 +6,12 @@
 package ActiveDirectory;
 
 
-import DbConnect.dbConnection;
+
+import DbConnect.DBConnection;
+import DbConnect.MyConnection;
 import Model.User;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -29,7 +32,8 @@ public class Authentication {
 
     private ArrayList<User> teamMembers;
     private  ArrayList<User> directors = new ArrayList<>();
-    private DbConnect.dbConnection  connection ;
+    private Connection  connection ;
+    private MyConnection myConnection = new MyConnection();
     InitialLdapContext ctx;
     
     
@@ -275,8 +279,8 @@ public class Authentication {
     
     public String checkNewEmployee(String username) throws ClassNotFoundException, SQLException{
         String status = "new";
-        connection = new dbConnection();
-        boolean tmp = connection.getEmployee(username);
+        connection = DBConnection.getConnectionToDB();
+        boolean tmp = myConnection.getEmployee(username);
         
         if(tmp){
             status = "old";

@@ -1,148 +1,22 @@
-        
-          
-        String[] attrIDs = {"directReports"};
-        searchControls.setReturningAttributes(attrIDs);
-        
-       
-        answer = ctx.search("CN=All Software Dev & IS Managers.LK,OU=Mail,OU=IFSGroups,DC=corpnet,DC=ifsworld,DC=com", "sAMAccountName=All Software Dev & IS Managers.CMB", searchControls);
-        ArrayList<String> myname = new ArrayList<>();
-        String name =null;
-        String url;
-            while (answer != null && answer.hasMore()) {
-             // get the direct reports url
-                SearchResult entry = (SearchResult)answer.next();
-                Attributes attributes = entry.getAttributes ();
-                name =attributes.get("member").toString().replace("member:", "");
-                System.out.println("step 01"+name);
-                String [] nameArray = name.split(",\\s");
-                 for(int i=0; i<nameArray.length;i++){
-                     String filter[]= nameArray[i].split(",OU");
-                     System.out.println("step 02 :"+filter[0]);
-                     answer = ctx.search(nameArray[i], filter[0], searchControls);
-                     
-                     
-                     
-                      while(answer != null && answer.hasMore() ){
-                          SearchResult result = (SearchResult) answer.next();
-                          Attributes attrs = result.getAttributes();
-                          
-                          String managerName =attrs.get("member").toString().replace("member:", "");
-                          System.out.println("step 03:"+managerName);
-                          String []managers = managerName.split(",\\s");
-                         
-                          for(int x=0; x<managers.length;x++){
-                              String [] filter2 = managers[x].split(",OU");
-                               System.out.println("step04 :"+managers[x]);
-                               System.out.println("step05 :"+filter2[0]);
-                               String myFilter[] = filter2[0].split("=");
-                              if(myFilter[1] == supervisorName){
-                                  managerURL = managers[x];
-                                  break;
-                              }
-                          }   
-                      }
-                 }
-                 
-                 System.out.println("manager" + managerURL);
-                 
-                 
-                 //getting  the direct reports
-                 
-                 if(managerURL != null){
-                 
-                     String [] managerFilter = managerURL.split(",OU");
-                    answer = ctx.search(managerURL, managerFilter[0], searchControls);
-                 
-                    SearchResult result = (SearchResult) answer.next();
-                    Attributes attrs = result.getAttributes();
-                 
-                    String member = attrs.get("directReports").toString().replace("directReports:", ""); 
-                    System.out.println(member +"partilly done");
-                    String members[] = member.split(",\\s");
-                    NamingEnumeration memAnswer;
-                    for(int j=0; j<members.length; j++){
-                        User memberUser = new User();
-                        String [] memberName = members[j].split(",OU");
-                        memberAnswer = ctx.search(members[j], memberName[0], searchControls);
-                        if(memberAnswer != null) {
-                            SearchResult searchResult =    (SearchResult) memberAnswer.next();
-                            Attributes attribute = searchResult.getAttributes();
-                            memberUser.setFullname(attribute.get("cn").toString().replace("cn:", ""));
-                            String n = attribute.get("sAMAccountName").toString().replace("sAMAccountName:", "").trim();
-                            memberUser.setUsername(n);
-                            memberUser.setExnum(connection.GetExtension(memberUser.getUsername()));
-                            //System.out.println("fullname :"+memberUser.getFullname());
-                           // System.out.println("username :"+memberUser.getUsername());
-                           // System.out.println(memberUser.getExnum().isEmpty());
-//                            for(String exnum : memberUser.getExnum()){
-//                                System.out.println("hi");
-//                                System.out.println("extensions :"+exnum);
-//                            }
-                                   
-                            teamMembers.add(memberUser);
-                            directReports.add(memberUser);
-                        }
-                   }
-                 }  
-                 
-                
-               
-               // String membername[] = url.split(",\\s");
-                //get the cn, username of the subordinates
-//                for(int i=0; i<membername.length; i++){
-//                    memberAnswer = ctx.search(membername[i], "manager= CN="+supervisorName+",OU=Employees,OU=IFSUsers,DC=corpnet,DC=ifsworld,DC=com", membersearchControls);
-//                    SearchResult memberResult = (SearchResult) memberAnswer.next();
-//                    Attributes memberAttributes =memberResult.getAttributes();
-//                
-//                    memberUser.setFullname(memberAttributes.get("cn").toString().replace("cn:", ""));
-//                    memberUser.setUsername(memberAttributes.get("sAMAccountName").toString().replace("sAMAccountName:", ""));
-//                    System.out.println(memberUser.getUsername());
-//                    System.out.println(memberUser.getFullname());
-//                    directReports.add(memberUser);
-//                }
-                
-               
-            }            
-            
-            //check whether the user is a director
-//             answer = ctx.search("CN=Directors.LK,OU=Mail,OU=IFSGroups,DC=corpnet,DC=ifsworld,DC=com", "sAMAccountName=" + user, searchControls);
-//            
-//            while (answer != null && answer.hasMore()) {
-//              //  status = "director";
-//                SearchResult entry = (SearchResult)answer.next();
-//                Attributes attrs = entry.getAttributes ();
-//                User memberUser = new User();
-//                
-//                String url = attrs.get("directReports").toString().replace("directReports:", "");   
-//                
-//                //get the cn, username of the subordinates
-//                memberAnswer = ctx.search(url, "", membersearchControls);
-//                SearchResult memberResult = (SearchResult) memberAnswer.next();
-//                Attributes memberAttributes =memberResult.getAttributes();
-//                memberUser.setFullname(""+memberAttributes.get("cn"));
-//                memberUser.setUsername(""+memberAttributes.get("sAMAccountName"));
-//                 System.out.println(memberUser.getUsername());
-//                System.out.println(memberUser.getFullname());
-//                directReports.add(memberUser);
-//            } 
-            
-//            //testing
-//            
-//            SearchControls constraints = new SearchControls();
-//            constraints.setSearchScope(SearchControls.SUBTREE_SCOPE);
-//
-//            String[] memberattrIDs = {"cn","sAMAccountName"};
-//            constraints.setReturningAttributes(memberattrIDs);
-//
-//           NamingEnumeration memeberanswer = ctx.search("CN="+supervisorName+",OU=Employees,OU=IFSUsers,DC=corpnet,DC=ifsworld,DC=com", "manager=CN=Kandasamy Yogendirakumar,OU=Employees,OU=IFSUsers,DC=corpnet,DC=ifsworld,DC=com", constraints);
-//           System.out.println(memeberanswer !=null);
-//              if (memeberanswer!=null) {
-//                System.out.println("yess");
-//                Attributes attrs = ((SearchResult) memeberanswer.next()).getAttributes();
-//                  System.out.println(attrs.get("cn").toString().replace("cn:", ""));
-//                  User user1 = new User();
-//                  user1.setFullname(attrs.get("cn").toString().replace("cn:", ""));
-//                  user1.setUsername(attrs.get("sAMAccountName").toString().replace("sAMAccountName:", ""));
-//                  directReports.add(user1);
-//              }
-            
+CREATE TABLE temp.User(
+
+  USERNAME VARCHAR2(20 BYTE) NOT NULL,
+  FULLNAME VARCHAR2(30 BYTE) NOT NULL,
+  ADMIN VARCHAR2(20 BYTE) NOT NULL,
+  CONSTRAINT USERNAME_pk PRIMARY KEY (USERNAME)
+
+);
+
+
+CREATE table EXTENSION (
+
+  USERNAME VARCHAR2(20 BYTE) NOT NULL,
+  EXTENSION NUMBER NOT NULL,
+  CHANGED_USER VARCHAR2(20 BYTE),
+  CONSTRAINT USERNAME_pk PRIMARY KEY (USERNAME),
+  CONSTRAINT EXTENSION_pk PRIMARY KEY (EXTENSION),
+  CONSTRAINT fk_User
+  FOREIGN KEY (USERNAME)
+  REFERENCES User(USERNAME)
+
+);

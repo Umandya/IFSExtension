@@ -108,7 +108,7 @@
                     <div class="col-md-5" style="min-height: 80px">
                         <div style="padding-bottom: 20px">
                            <div style="color: #863D8D; font-size:16px">
-                               <img src="images/phone3.png" alt="Mountain View" style="width:30px;height:30px;">  <b><input type="text" id="<%=lines%>" onkeyup="myFunction('<%=lines%>')" value="<%=lines%>" style="border:transparent ;border-style:solid; background-color: transparent; width: 50px;"></b>
+                               <img src="images/phone3.png" alt="Mountain View" style="width:30px;height:30px;">  <b><input type="text" id="<%=lines%>" onkeyup="myFunction('<%=lines%>')" value="<%=lines%>" style="border:transparent ;border-style:solid; background-color: transparent; width: 50px;" readonly=""></b>
                                 
                             </div>
                         </div>

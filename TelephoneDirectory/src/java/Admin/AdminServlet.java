@@ -6,7 +6,7 @@
 package Admin;
 
 import ActiveDirectory.Authentication;
-import DbConnect.dbConnection;
+import DbConnect.MyConnection;
 import java.io.IOException;
 import static java.lang.System.out;
 import java.sql.SQLException;
@@ -56,7 +56,7 @@ public class AdminServlet extends HttpServlet {
 //        }
 
         RequestDispatcher rd;
-        DbConnect.dbConnection empEx = new dbConnection();
+        MyConnection empEx = new MyConnection();
         String url = request.getServletPath();
         Authentication ac= new Authentication();
        

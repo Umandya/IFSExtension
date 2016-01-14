@@ -6,11 +6,13 @@
 package Login;
 
 import ActiveDirectory.Authentication;
-import DbConnect.dbConnection;
+import DbConnect.DBConnection;
+import DbConnect.MyConnection;
 import Model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -47,7 +49,8 @@ public class LoginServlet extends HttpServlet {
         /* TODO output your page here. You may use following sample code. */
         RequestDispatcher rd;
         String url = request.getServletPath();
-        DbConnect.dbConnection emp = null;
+        MyConnection emp= new MyConnection();
+                
         
         ActiveDirectory.Authentication ac = new Authentication();
        
@@ -69,7 +72,7 @@ public class LoginServlet extends HttpServlet {
             
 //            String username = request.getParameter("username");
 //            String password = request.getParameter("password");
-            emp = new dbConnection();   
+             
             String user = "Correct user";
             String validate ;
             ArrayList<String> myArray = new ArrayList<>();

@@ -6,11 +6,10 @@
 package Employees;
 
 import ActiveDirectory.Authentication;
-import DbConnect.dbConnection;
+import DbConnect.MyConnection;
 import Model.User;
 import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class EmplyeeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         RequestDispatcher rd;
-        DbConnect.dbConnection empEx = new dbConnection();
+        MyConnection empEx = new MyConnection();
         String url = request.getServletPath();
         ArrayList<String> myArray = new ArrayList<>();
         String username = request.getParameter("username");
