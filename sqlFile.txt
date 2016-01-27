@@ -1,0 +1,14 @@
+ fullname : Sagara Sendanayake
+Info:   username :saselk
+Info:   fullname : Prabath Kudagamage
+Info:   username :prkulk
+Info:   fullname : Rasanga Chinthaka
+Info:   username :rachlk
+Info:   fullname : Viraj Jayawardena
+Info:   username :vijauk
+Info:   fullname : Suyama Aranayake
+
+
+Insert into IFSTEST.IFSEXTENSIONS  (EXTENSION,USERNAME,FULLNAME,USERTYPE) VALUES ('3333','prkulk','Prabath Kudagamage','admin');
+Insert into IFSTEST.IFSEXTENSIONS  (EXTENSION,USERNAME,FULLNAME,USERTYPE) VALUES ('4444','rachlk','Rasanga Chinthaka','admin');
+Insert into IFSTEST.IFSEXTENSIONS  (EXTENSION,USERNAME,FULLNAME,USERTYPE) VALUES ('5555','vijauk','Viraj Jayawardena','admin');
